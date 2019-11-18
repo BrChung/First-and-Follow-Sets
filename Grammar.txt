@@ -1,0 +1,54 @@
+Production Rules:
+S -> A | D | I | L | W | B | M
+A -> id = E ;
+E -> T E'
+E' -> + T E' | - T E' | EPSILON
+T -> F T'
+T' -> * F T' | / F T' | EPSILON
+F -> ( E ) | id | INT | REAL
+D -> P id M ; | EPSILON
+P -> int | float | bool
+M -> , id M | EPSILON
+I -> if ( C ) { S }
+L -> else S
+W -> while ( C ) { S }
+B -> { S M }
+M -> ; S M | EPSILON
+C -> E R E | E
+R -> < | <= | == | >= | >
+
+First
+A	id
+E'	+, -, ε
+T'	*, /, ε
+F	(, id, INT, REAL
+D	ε, int, float, bool
+P	int, float, bool
+M	,, ε, ;
+I	if
+L	else
+W	while
+B	{
+R	<, <=, ==, >=, >
+S	id, if, while, ,, ε, ;, int, float, bool, {, else
+T	(, id, INT, REAL
+E	(, id, INT, REAL
+C	(, id, INT, REAL
+
+Follow
+S	$, ,, ;, }
+A	$, ,, ;, }
+E	<, <=, ==, >=, >, ), ;
+E'	<, <=, ==, >=, >, ), ;
+T	+, -, <, <=, ==, >=, >, ), ;
+T'	+, -, <, <=, ==, >=, >, ), ;
+F	*, /, +, -, <, <=, ==, >=, >, ), ;
+D	$, ,, ;, }
+P	id
+M	}, ;, $, ,
+I	$, ,, ;, }
+L	$, ,, ;, }
+W	$, ,, ;, }
+B	$, ,, ;, }
+C	)
+R	(, id, INT, REAL
