@@ -15,16 +15,16 @@ int count, n = 0;
   
 // Stores the final result  
 // of the First Sets 
-char calc_first[40][1600]; 
+char calc_first[10][100]; 
   
 // Stores the final result 
 // of the Follow Sets 
-char calc_follow[40][1600]; 
+char calc_follow[10][100]; 
 int m = 0; 
   
 // Stores the production rules
-char production[40][40]; 
-char f[40], first[40]; 
+char production[10][10]; 
+char f[10], first[10]; 
 int k; 
 char ck; 
 int e; 
@@ -38,46 +38,14 @@ int main(int argc, char **argv)
     count = 8; 
       
     // The Input grammar 
-    strcpy(production[0], "S=A"); 
-    strcpy(production[1], "S=D"); 
-    strcpy(production[2], "S=I"); 
-    strcpy(production[3], "S=L"); 
-    strcpy(production[4], "S=W"); 
-    strcpy(production[5], "S=B"); 
-    strcpy(production[6], "S=M"); 
-    strcpy(production[7], "A=i.E;"); 
-    strcpy(production[8], "E=TY"); 
-    strcpy(production[9], "Y=+TY");
-    strcpy(production[10], "Y=-TY");
-    strcpy(production[11], "Y=#");
-    strcpy(production[12], "T=FX");
-    strcpy(production[13], "X=*FX");
-    strcpy(production[14], "X=/FX");
-    strcpy(production[15], "X=#");
-    strcpy(production[16], "F=(E)");
-    strcpy(production[17], "F=i");
-    strcpy(production[18], "F=n");
-    strcpy(production[19], "F=r");
-    strcpy(production[20], "D=PiM;");
-    strcpy(production[21], "D=#");
-    strcpy(production[22], "P=t");
-    strcpy(production[23], "P=f");
-    strcpy(production[24], "P=b");
-    strcpy(production[25], "M=,iM");
-    strcpy(production[26], "M=#");
-    strcpy(production[27], "I=<(C)[S]");
-    strcpy(production[28], "L=>S");
-    strcpy(production[29], "W=w(C)[S]");
-    strcpy(production[30], "B={SM}");
-    strcpy(production[31], "M=;SM");
-    strcpy(production[32], "M=#");
-    strcpy(production[33], "C=ERE");
-    strcpy(production[34], "C=E");
-    strcpy(production[35], "R=1");
-    strcpy(production[36], "R=2");
-    strcpy(production[37], "R=3");
-    strcpy(production[38], "R=4");
-    strcpy(production[39], "R=5");
+    strcpy(production[0], "E=TY"); 
+    strcpy(production[1], "Y=+TY"); 
+    strcpy(production[2], "Y=#"); 
+    strcpy(production[3], "T=FX"); 
+    strcpy(production[4], "X=*FX"); 
+    strcpy(production[5], "X=#"); 
+    strcpy(production[6], "F=i"); 
+    strcpy(production[7], "F=(E)"); 
 
 
       
@@ -87,7 +55,7 @@ int main(int argc, char **argv)
       
     // Initializing the calc_first array 
     for(k = 0; k < count; k++) { 
-        for(kay = 0; kay < 1600; kay++) { 
+        for(kay = 0; kay < 100; kay++) { 
             calc_first[k][kay] = '!'; 
         } 
     } 
@@ -146,7 +114,7 @@ int main(int argc, char **argv)
       
     // Initializing the calc_follow array 
     for(k = 0; k < count; k++) { 
-        for(kay = 0; kay < 1600; kay++) { 
+        for(kay = 0; kay < 100; kay++) { 
             calc_follow[k][kay] = '!'; 
         } 
     } 
@@ -209,9 +177,9 @@ void follow(char c)
     if(production[0][0] == c) { 
         f[m++] = '$'; 
     } 
-    for(i = 0; i < 40; i++) 
+    for(i = 0; i < 10; i++) 
     { 
-        for(j = 2;j < 40; j++) 
+        for(j = 2;j < 10; j++) 
         { 
             if(production[i][j] == c) 
             { 
